@@ -1,0 +1,196 @@
+/* Base page background */
+/* :root {
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --text-dark: #1e293b;
+  --text-muted: #475569;
+  --bg-white: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --accent: #10b981;
+} */
+
+
+
+.project-overview {
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: var(--bg-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  border: 1px solid var(--border-color);
+}
+
+.project-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+  border-bottom: 3px solid var(--primary-light);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+.project-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.section-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  color: var(--text-dark);
+}
+
+/* Feature Grid */
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-item {
+  background: var(--primary-light);
+  padding: 1.25rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+  transition: transform 0.2s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-3px);
+}
+
+.feature-title {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.feature-sublist {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Problem & Solution Styling */
+.problem-list {
+  background: #fff1f2;
+  padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+  border-radius: 12px;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
+
+.core-list {
+  list-style: none;
+  padding: 0;
+}
+
+.core-list li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* Details Wrapper Styling */
+.overview-details {
+  min-width: 1200px;
+  align-self: flex-end;
+  /* max-width: 900px; */
+  background: var(--bg-white);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  overflow: hidden; /* Ensures content doesn't spill over border radius */
+  transition: all 0.3s ease;
+}
+
+/* Summary Bar Styling */
+.overview-details-summary {
+  list-style: none; /* Removes default triangle in Chrome/Safari */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  background: var(--bg-white);
+  transition: background 0.2s ease;
+  user-select: none;
+}
+
+.overview-details-summary::-webkit-details-marker {
+  display: none; /* Removes default triangle in older browsers */
+}
+
+.overview-details-summary:hover {
+  background: var(--primary-light);
+}
+
+/* Custom Icon for Open/Close */
+.overview-details-summary::after {
+  content: '+';
+  font-family: monospace;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--primary);
+}
+
+/* Animation when open */
+.overview-details[open] .overview-details-summary::after {
+  transform: rotate(45deg); /* Turns '+' into '×' or just rotates it */
+  color: var(--text-dark);
+}
+
+.overview-details[open] .overview-details-summary {
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-white);
+}
+
+/* Padding adjustment for the internal section when open */
+.overview-details[open] .project-overview {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding-top: 1rem;
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+
+  .project-overview {
+    padding: 1.5rem;
+    margin: 1rem;
+    max-width: 640px
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-details-summary {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+}

@@ -1,0 +1,74 @@
+/* =========================
+   Deployment Section
+========================= */
+
+:root {
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --text-dark: #1e293b;
+  --text-muted: #475569;
+  --bg-white: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --accent: #10b981;
+}
+
+
+.deployment-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.deployment-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 1.2rem;
+}
+
+.deployment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.deployment-card {
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
+  background: var(--primary-light);
+  border: 1px solid var(--border-color);
+  transition: all 0.25s ease;
+}
+
+.deployment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.6rem 1.2rem rgba(0,0,0,0.08);
+}
+
+.deployment-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.deployment-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  word-break: break-word;
+}
+
+/* optional link style inside cards */
+.deployment-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.deployment-link:hover {
+  text-decoration: underline;
+}

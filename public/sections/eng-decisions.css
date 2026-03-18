@@ -1,0 +1,161 @@
+/* ===============================
+   Engineering Highlights Section
+================================= */
+
+.engineering-highlights {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--bg-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  border: 1px solid var(--border-color);
+}
+
+.key_eng_decisions{
+font-size: 2rem;
+}
+
+.cache_manage{
+  width: 100%;
+}
+/* ===== GRID ===== */
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* ===== CARD ===== */
+
+.highlight-card {
+  align-self: start;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 2rem;
+  border-radius: 14px;
+  border: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== HEADER ===== */
+
+.card-header {
+  margin-bottom: 1rem;
+}
+
+.folder-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.highlight-card h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 0.75rem;
+}
+
+/* ===== DESCRIPTION ===== */
+
+.highlight-card > p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* ===== ENGINEERING DETAILS BOX ===== */
+
+.decision-why {
+  background: #1e293b;
+  padding: 1.25rem;
+  border-radius: 10px;
+  border-left: 3px solid #38bdf8;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+}
+
+.decision-why strong {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== TECH STACK ===== */
+
+.tech-stack {
+  margin-top: 1.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #1e293b;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.eng_decisions_toggle {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none; /* removes default arrow */
+}
+
+.eng_decisions_toggle::-webkit-details-marker {
+  display: none; /* removes arrow in chrome */
+}
+
+.eng_decisions_toggle:hover{
+  color: #38bdf8;
+}
+
+/* hide close text by default */
+.close-text {
+  display: none;
+}
+
+/* when open, switch text */
+.eng_decisions_expand[open] .open-text {
+  display: none;
+}
+
+.eng_decisions_expand[open] .close-text {
+  display: inline;
+}
+
+.backend{
+  background-color: #f8fafc;
+}
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,96 @@
+/* ===== UPDATED TECH STACK SECTION (Light Mode with Green Accents) ===== */
+.be-tech-stack-section {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f8fafc; /* Light Slate background */
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  font-family: 'Inter', sans-serif;
+}
+
+.be-tech-stack-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #0f172a; /* Slate 900 */
+}
+
+.be-tech-stack-flexbox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.be-stack-card {
+  background: #ffffff; /* Card is now white */
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.be-stack-card:hover {
+  transform: translateY(-5px);
+  border-color: #10b981; /* Emerald Green */
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.4);
+}
+
+.be-stack-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.be-stack-icon, .be-stack-icon-3 {
+  color: black; /* Green Icons */
+  font-size: 1.2rem;
+}
+
+.be-stack-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b; /* Slate 800 */
+  margin: 0;
+}
+
+.be-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.be-tag-container span {
+  background: rgba(16, 185, 129, 0.05); /* Soft Green Tint */
+  color: #059669; /* Slightly darker green for text readability */
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Fira Code', monospace;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  transition: all 0.2s ease;
+}
+
+.be-stack-card:hover .be-tag-container span {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .be-tech-stack-section {
+    padding: 1.5rem 1rem;
+    margin: 1.5rem auto;
+  }
+  
+  .be-tech-stack-title {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+}

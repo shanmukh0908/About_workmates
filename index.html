@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/tmlogo27dec3.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About WorkMates</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sections/projectoverview.css">
+  <link rel="stylesheet" href="sections/eng-decisions.css">
+  <link rel="stylesheet" href="sections/eng_decisions_backend.css">
+  <link rel="stylesheet" href="sections/backend_techstack.css">
+  <link rel="stylesheet" href="sections/frontend_techstack.css">
+  <link rel="stylesheet" href="sections/System-Architecture-Overview.css">
+  <link rel="stylesheet" href="sections/folder_tree.css">
+  <link rel="stylesheet" href="sections/screenshots.css">
+  <link rel="stylesheet" href="sections/header.css">
+  <link rel="stylesheet" href="sections/deployment.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <section class="project-hero">
+    
+    <div class="project-brand">
+      <img 
+        src="images/tmlogo27dec3.png" 
+        alt="WorkMates Logo" 
+        class="project-logo"
+      >
+      <h1 class="project-title-main">WorkMates</h1>
+    </div>
+
+    <div class="live_links">
+
+      <a href="https://work-mates.vercel.app/" class="btn-primary" target="_blank">
+        🚀 Visit WorkMates Live
+      </a>
+
+      <a href="https://github.com/shanmukh0908/WorkMates.git" class="btn-primary github" target="_blank">
+        💻 GitHub Repository
+      </a>
+
+    </div>
+
+    <div class="project-text">
+      <p class="project-tagline">
+        A Location-Based Service Marketplace Connecting Local Workers and Clients
+      </p>
+
+      <div class="project-meta">
+        Full-Stack Web Application • 2026  
+        <br>
+        React • Node.js • Express • MongoDB • REST API
+      </div>  
+    </div>
+
+  </section>
+
+  <div class="sections">
+
+    <div id="overview"></div>
+    <div id="screenshots"></div>
+
+    <details class="system_flow_expand">
+        <summary class="system_flow_toggle">
+          <span class="open-text-2">System Architecture Overview 🔽</span>
+          <span class="close-text-1">✖</span>
+        </summary>
+      <img src="/images/system-flow2.png" alt="system_flow">
+    </details>
+
+    <div id="eng_decisions"></div>
+    <div id="eng_decisions_backend"></div>
+    <div id="frontend_techstack"></div>
+    <div id="backend_techstack"></div>
+    
+
+    <div class="additional-details">
+      <details class="system_flow_expand">
+        <summary class="system_flow_toggle">
+          <span class="open-text-2">Frontend Architecture & Control Flow 🔽</span>
+          <span class="close-text-1">✖</span>
+        </summary>
+        <img src="/images/app-architecture.png" alt="system_flow">
+      </details>
+
+      <div id="frontend_folder_tree"></div>
+      <div id="backend_folder_tree"></div> 
+    </div>
+
+    <div id="deployment_section"></div>
+  </div>
+
+
+<script type="module" src="src/main.js"></script>
+
+</body>
+</html>

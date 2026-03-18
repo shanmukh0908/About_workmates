@@ -1,0 +1,230 @@
+
+  .tree-container {
+    justify-self: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    background-color: #0d1117; /* GitHub Dark Theme */
+    width: fit-content;
+    overflow-x: auto; /* Forces a scrollbar if the columns are too wide */
+    align-items: flex-start;
+    border-radius: 10px;
+  }
+
+  .tree-container-backend {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    background-color: #0d1117; /* GitHub Dark Theme */
+    width: 100%;
+    align-items: flex-start;
+    border-radius: 10px;
+  }
+
+  /* 2. Individual Units */
+  .tree-unit {
+    flex: 0 0 auto; /* Prevents columns from shrinking/jumbling */
+    background: #161b22;
+    padding: 15px;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    min-width: 320px; /* Ensures enough room for deep nesting */
+  }
+
+  /* 3. The Code Text */
+  .tree-unit pre {
+    margin: 0;
+    color: #c9d1d9;
+    font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    /* CRITICAL: This prevents lines from breaking and jumbling the tree */
+    white-space: pre; 
+    overflow-x: visible;
+  }
+
+  /* 4. Labels for each part */
+  .tree-unit::before {
+    content: "Module Segment";
+    display: block;
+    margin-bottom: 10px;
+    color: #58a6ff;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 5px;
+  }
+
+  /* Tree Styling */
+  h3 {
+    color: #4fc1ff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    margin-top: 0;
+    border-bottom: 1px solid #3e3e42;
+    padding-bottom: 8px;
+  }
+
+  pre {
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+    white-space: pre-wrap; /* Keeps lines from breaking the layout */
+  }
+
+.tree-system_flow_expand-backend .tree-system_flow_expand {
+  width: 100%;
+  margin: 0.5rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease; 
+}
+
+.tree-system_flow_expand-backend:hover .tree-system_flow_expand:hover{
+    transform: scale(1.01);
+}
+
+/* The Boxed Toggle Header */
+.tree-system_flow_toggle {
+  list-style: none; /* Removes default arrow */
+  cursor: pointer;
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc; /* Light slate box */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.tree-system_flow_toggle:hover{
+ background: #1dc24448;
+ transform: scale(1.01);
+}
+
+
+
+/* Visual indicator when tree-open */
+.tree-system_flow_expand-backend[open] .tree-system_flow_expand[open] {
+     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.tree-system_flow_expand-backend[open] .tree-system_flow_expand[open] .tree-system_flow_toggle {
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: none;
+}
+
+.tree-system_flow_expand-backend[open] .tree-system_flow_expand[open]:hover{
+    transform: scale(1);
+}
+
+/* Formatting the text inside the toggle box */
+.tree-open-text-2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+
+/* Adding a small folder or tech icon before the text */
+.tree-open-text-1::before,.tree-open-text-2::before  {
+  content: "📂"; 
+  font-size: 1.2rem;
+}
+
+.tree-open-text-1::after {
+  content: "click  to tree-open"; 
+  font-size: 1rem;
+  font-weight: 300;
+  margin-left: 40em;
+  border-radius: 100px;
+  padding: 0.2rem;
+  border:#2c589d4c 1px solid;
+  background-color: #749ee134;
+  text-align: center;
+}
+
+.tree-close-text-1{
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: bold;
+  display: none;
+}
+
+.tree-system_flow_expand[open]{
+  width: fit-content;
+}
+
+.tree-system_flow_expand[open] .tree-open-text-2 {
+  display: none;
+}
+
+.tree-system_flow_expand[open] .tree-close-text-1 {
+  display: inline;
+}
+
+.tree-system_flow_expand-backend[open] .tree-open-text-2{
+  display: none;
+}
+
+.tree-system_flow_expand-backend[open] .tree-close-text-1{
+  display: inline;
+}
+
+
+.tree-system_flow_expand-backend .tree-system_flow_expand {
+  display: block;
+  margin: 0.5rem auto; /* Centered with vertical spacing */
+  border-radius: 8px;
+  /* Modern soft shadow for the diagram */
+  border: 1px solid #f1f5f9;
+}
+
+/* Remove default marker in Chrome/Safari */
+.tree-system_flow_toggle::-webkit-details-marker {
+  display: none;
+}
+
+
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+  .tree-system_flow_expand-backend .tree-system_flow_expand {
+    width: 100%;
+    margin:0
+  }
+  
+  .tree-open-text-1 {
+    font-size: 1rem;
+  }
+
+  .tree-container {
+      flex-direction: column;
+      padding: 0;
+      max-width: 98vw;
+    }
+
+  .tree-unit{
+   width: 98%;
+  }
+
+  .backend{
+    width: 100%;
+  }
+}
+

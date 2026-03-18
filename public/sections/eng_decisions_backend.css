@@ -1,0 +1,164 @@
+
+/* ===============================
+   Backend Engineering Highlights Section
+================================= */
+
+.be-engineering-highlights{
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--bg-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  border: 1px solid var(--border-color);
+}
+
+.be-key_eng_decisions {
+  font-size: 2rem;
+  color: #111827;
+}
+
+.be-cache_manage {
+  width: 100%;
+}
+
+/* ===== GRID ===== */
+
+.be-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* ===== CARD ===== */
+
+.be-highlight-card {
+  align-self: start;
+  background: #111827; /* graphite */
+  color: #f3f4f6;
+  padding: 2rem;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.be-highlight-card:hover {
+  transform: translateY(-4px);
+  border-color: #10b981; /* emerald accent */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== HEADER ===== */
+
+.be-card-header {
+  margin-bottom: 1rem;
+}
+
+.be-folder-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.be-highlight-card h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 0.75rem;
+}
+
+/* ===== DESCRIPTION ===== */
+
+.be-highlight-card > p {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* ===== ENGINEERING DETAILS BOX ===== */
+
+.be-decision-why {
+  background: #1f2937;
+  padding: 1.25rem;
+  border-radius: 10px;
+  border-left: 3px solid #10b981;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+}
+
+.be-decision-why strong {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #10b981;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== TECH STACK ===== */
+
+.be-tech-stack {
+  margin-top: 1.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #1f2937;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* ===== DETAILS TOGGLE (UNCHANGED STRUCTURE) ===== */
+
+.be-eng_decisions_toggle {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  color: #10b981;
+}
+
+.be-eng_decisions_toggle::-webkit-details-marker {
+  display: none;
+}
+
+.be-eng_decisions_toggle:hover {
+  color: #34d399;
+}
+
+/* hide close text by default */
+.be-close-text {
+  display: none;
+}
+
+/* when open, switch text */
+.be-eng_decisions_expand[open] .be-open-text {
+  display: none;
+}
+
+.be-eng_decisions_expand[open] .be-close-text {
+  display: inline;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+  .be-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .be-highlight-card {
+    padding: 1.5rem;
+  }
+}

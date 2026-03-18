@@ -1,0 +1,500 @@
+<section class="engineering-highlights">
+
+  <h2  class="key_eng_decisions">⚙  key engineering decisions  frontend</h2>
+
+  <div  class="cache_manage">
+    <h3 class="section-heading">🚀 Performance-Oriented Approach</h3>
+    
+    <p class="decision-description">
+      Moved from traditional <em>"Fetch-on-Change"</em> patterns 
+      to a <strong>State-Based Data Sync</strong>, reducing 
+      unnecessary API calls for authenticated user flows.
+      <br>
+      also moved away from the <em>backend image processing pipeline</em>. Implemented a <strong>Direct-to-Cloudinary approach</strong> for image uploads
+    </p>
+
+    <div class="highlight-grid">
+
+      <!-- Card 1 -->
+      <div class="tech-card highlight-card">
+        <div class="card-header">
+          <span class="folder-tag">UX Optimization</span>
+          <h4>The "Instant-Save" Pattern</h4>
+        </div>
+
+        <p>
+          Built a fast save/unsave experience using 
+          <strong>TanStack Query</strong> with route-level data loading via 
+          <strong>React Router Loaders</strong>.
+        </p>
+
+        <details class="eng_decisions_expand">
+          <summary class="eng_decisions_toggle">
+            <span class="open-text">more...</span>
+            <span class="close-text">✖</span>
+          </summary>
+          
+        <div class="decision-why">
+          <strong>Engineering Strategy:</strong><br>
+          Used <code>queryClient.ensureQueryData</code> for initial data loading 
+          and manual cache updates to avoid unnecessary refetching.
+
+          <br><br>
+          Since saved tasks are user-specific, 
+          the cache was treated as the main source after first fetch.
+
+          <br><br>
+          <strong>Impact:</strong><br>
+          • No loading flicker<br>
+          • Immediate UI feedback<br>
+          • Reduced repeated API calls
+        </div>
+
+        <div class="tech-stack">
+          React • TanStack Query • React Router • REST API
+        </div>
+        </details>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="tech-card highlight-card">
+        <div class="card-header">
+          <span class="folder-tag">State Architecture</span>
+          <h4>Optimistic Profile Cache Sync</h4>
+        </div>
+
+        <p>
+          Avoided full-query refetch by updating only required fields 
+          inside the existing <code>["user"]</code> cache.
+        </p>
+
+        <details class="eng_decisions_expand">
+          <summary class="eng_decisions_toggle">
+            <span class="open-text">more...</span>
+            <span class="close-text">✖</span>
+          </summary>
+          
+        <div class="decision-why">
+          <strong>Engineering Strategy:</strong><br>
+          Replaced <code>invalidateQueries</code> with 
+          <code>setQueryData</code> to update only changed fields 
+          while keeping existing data intact.
+
+          <br><br>
+          Since profile data is user-specific, 
+          full refetching was not required.
+
+          <br><br>
+          <strong>Impact:</strong><br>
+          • Immediate UI updates<br>
+          • No loading state<br>
+          • Consistent data across components
+        </div>
+
+        <div class="tech-stack">
+          React • TanStack Query • Controlled Updates
+        </div>
+        </details>
+        </div>
+
+      <div class="tech-card highlight-card">
+        <div class="card-header">
+          <span class="folder-tag">Data Handling</span>
+          <h4>Concurrent Direct-to-Cloud Uploads</h4>
+        </div>
+
+        <p>
+          Built a client-side image upload flow using 
+          <code>Promise.all()</code> and <code>FormData</code> to avoid backend load.
+        </p>
+
+        <details class="eng_decisions_expand">
+          <summary class="eng_decisions_toggle">
+            <span class="open-text">more...</span>
+            <span class="close-text">✖</span>
+          </summary>
+          
+          <div class="decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Instead of sending large images to the backend, the frontend first requests a signature. 
+
+            <br><br>
+            After authorization, multiple <code>FormData</code> requests are sent in parallel directly to Cloudinary.
+
+            <br><br>
+            <strong>Impact:</strong><br>
+            • Faster uploads<br>
+            • No UI blocking<br>
+            • Better handling of async operations
+          </div>
+
+          <div class="tech-stack">
+            React • Axios • Promise.all • FormData • Cloudinary API
+          </div>
+        </details>
+        </div>
+
+  </div>
+
+  <div  class="cache_manage">
+    <h3 class="section-heading">📡 Centralized API Layer with Axios</h3>
+    
+    <div class="highlight-grid">
+
+      <div class="tech-card highlight-card">
+      <div class="card-header">
+        <span class="folder-tag">Network Architecture</span>
+        <h4>Centralized API Layer</h4>
+      </div>
+
+      <p>
+        Created a reusable API layer using a 
+        <strong>custom Axios instance</strong> to handle authentication 
+        and error handling in one place.
+      </p>
+
+      <details class="eng_decisions_expand">
+        <summary class="eng_decisions_toggle">
+          <span class="open-text">more...</span>
+          <span class="close-text">✖</span>
+        </summary>
+
+        <div class="decision-why">
+          <strong>Engineering Strategy:</strong><br>
+          Used request interceptors to attach JWT tokens 
+          and response interceptors to handle common errors like 401.
+
+          <br><br>
+          This avoids repeating auth logic in multiple components.
+
+          <br><br>
+          <strong>Impact:</strong><br>
+          • Cleaner code<br>
+          • Centralized error handling<br>
+          • Easier to maintain API logic
+        </div>
+
+        <div class="tech-stack">
+          Axios • JWT • REST API • Interceptors
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div  class="cache_manage">
+
+    <h3 class="section-heading">🏗 Multi-Layer State Management (Redux + useReducer + TanStack Query)</h3>
+    
+    <div class="highlight-grid">
+
+      <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">Redux State Management</span>
+    <h4>State Separation Strategy</h4>
+  </div>
+
+  <p>
+    Used <strong>Redux Toolkit</strong> for global state and 
+    <strong>local state</strong> for component-level logic.
+  </p>
+
+  <details class="eng_decisions_expand">
+    <summary class="eng_decisions_toggle">
+      <span class="open-text">more...</span>
+      <span class="close-text">✖</span>
+    </summary>
+
+    <div class="decision-why">
+      <strong>Engineering Strategy:</strong><br>
+      Redux was used only for data that needs to persist across pages 
+      like user info and roles.
+
+      <br><br>
+      Local state was used for UI-related logic to keep Redux clean.
+
+      <br><br>
+      <strong>Impact:</strong><br>
+      • Predictable global state<br>
+      • Reduced unnecessary complexity<br>
+      • Better separation of concerns
+    </div>
+
+    <div class="tech-stack">
+      Redux Toolkit • React State • Hooks
+    </div>
+  </details>
+</div>
+
+    <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">State Logic</span>
+    <h4>Reducer-Based Filter Logic</h4>
+  </div>
+
+  <p>
+    Managed filtering logic (Date, Price, Distance, Category) using a 
+    <strong>single reducer</strong>.
+  </p>
+
+  <details class="eng_decisions_expand">
+    <summary class="eng_decisions_toggle">
+      <span class="open-text">more...</span>
+      <span class="close-text">✖</span>
+    </summary>
+
+    <div class="decision-why">
+      <strong>Engineering Strategy:</strong><br>
+      Used <code>useReducer</code> to handle multiple related states 
+      in one place instead of many <code>useState</code> calls.
+
+      <br><br>
+      <strong>Impact:</strong><br>
+      • Easier to manage logic<br>
+      • Better maintainability<br>
+      • Cleaner component code
+    </div>
+
+    <div class="tech-stack">
+      React Hooks • useReducer • State Logic
+    </div>
+  </details>
+  </div>
+
+  <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">Data Handling</span>
+    <h4>Server State with TanStack Query</h4>
+  </div>
+
+  <p>
+    Used <strong>TanStack Query</strong> to manage server data 
+    and handle caching and refetching.
+  </p>
+
+  <details class="eng_decisions_expand">
+    <summary class="eng_decisions_toggle">
+      <span class="open-text">more...</span>
+      <span class="close-text">✖</span>
+    </summary>
+
+    <div class="decision-why">
+      <strong>Engineering Strategy:</strong><br>
+      Used dynamic <code>queryKey</code> based on filters 
+      to automatically refetch data when filters change.
+
+      <br><br>
+      <strong>Impact:</strong><br>
+      • Automatic data updates<br>
+      • Reduced manual API calls<br>
+      • Efficient caching
+    </div>
+
+    <div class="tech-stack">
+      TanStack Query • Server State • Caching
+    </div>
+  </details>
+  </div>
+
+  <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">Performance</span>
+    <h4>Data Prefetching (Loaders)</h4>
+  </div>
+
+  <p>
+    Used <strong>React Router Loaders</strong> to load data 
+    before rendering components.
+  </p>
+
+  <details class="eng_decisions_expand">
+    <summary class="eng_decisions_toggle">
+      <span class="open-text">more...</span>
+      <span class="close-text">✖</span>
+    </summary>
+
+    <div class="decision-why">
+      <strong>Engineering Strategy:</strong><br>
+      Prefetched data using loaders and stored it in cache 
+      before component mount.
+
+      <br><br>
+      <strong>Impact:</strong><br>
+      • Faster page load<br>
+      • Reduced loading states<br>
+    </div>
+
+    <div class="tech-stack">
+      React Router • Prefetching • TanStack Query
+    </div>
+  </details>
+</div>
+
+
+  </div>
+
+ <div  class="cache_manage">
+    <h3 class="section-heading">⚡ Performance Optimization & Geolocation</h3>
+    
+    <div class="highlight-grid">
+
+      <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">Performance</span>
+    <h4>Code Splitting</h4>
+  </div>
+
+  <p>
+    Improved load time using <strong>React.lazy</strong> and 
+    <strong>Suspense</strong>.
+  </p>
+
+  <details class="eng_decisions_expand">
+    <summary class="eng_decisions_toggle">
+      <span class="open-text">more...</span>
+      <span class="close-text">✖</span>
+    </summary>
+
+    <div class="decision-why">
+      <strong>Engineering Strategy:</strong><br>
+      Split code into smaller chunks loaded only when needed.
+
+      <br><br>
+      <strong>Impact:</strong><br>
+      • Faster initial load<br>
+      • Better performance on slower networks<br>
+    </div>
+
+    <div class="tech-stack">
+      React.lazy • Suspense • Code Splitting
+    </div>
+  </details>
+  </div>
+
+  <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">Geolocation</span>
+    <h4>Location Persistence</h4>
+  </div>
+
+  <p>
+    Stored user location to improve location-based features.
+  </p>
+
+  <details class="eng_decisions_expand">
+    <summary class="eng_decisions_toggle">
+      <span class="open-text">more...</span>
+      <span class="close-text">✖</span>
+    </summary>
+
+    <div class="decision-why">
+      <strong>Engineering Strategy:</strong><br>
+      Used Geolocation API and saved coordinates in localStorage.
+
+      <br><br>
+      <strong>Impact:</strong><br>
+      • Faster access to location-based features<br>
+      • Reduced repeated location requests<br>
+    </div>
+
+    <div class="tech-stack">
+      Geolocation API • LocalStorage
+    </div>
+  </details>
+  </div>
+  
+
+</div>
+  
+
+</section>
+
+
+<!-- <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">UX Optimization</span>
+    <h4>The "Instant-Save" Pattern</h4>
+  </div>
+
+  <p>
+    Implemented a zero-latency task save/unsave experience using 
+    <strong>TanStack Query</strong> and 
+    <strong>React Router Loaders</strong>.
+  </p>
+  
+  <div class="decision-why">
+    <strong>The Engineering Decision:</strong><br>
+    Leveraged <code>queryClient.ensureQueryData</code> for route-level prefetching 
+    and implemented manual cache updates inside mutation lifecycles 
+    to avoid unnecessary refetching.
+    
+    <br><br>
+    Since saved tasks are strictly <em>user-specific state</em> 
+    and do not require real-time global synchronization, 
+    a client-side cache was used as the single source of truth 
+    after initial hydration.
+
+    <br><br>
+    <strong>The Impact:</strong><br>
+    • Eliminated UI loading flickers<br>
+    • Achieved instant optimistic feedback<br>
+    • Reduced redundant GET requests to zero after initial hydration<br>
+    • Scoped state updates without global re-rendering
+  </div>
+</div>
+
+<div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">State Architecture</span>
+    <h4>Optimistic Profile Cache Synchronization</h4>
+  </div>
+
+  <p>
+    Engineered an instant profile update flow using 
+    <strong>TanStack Query</strong> mutations with manual cache synchronization 
+    to eliminate refetch-based updates.
+  </p>
+  
+  <div class="decision-why">
+    <strong>The Engineering Decision:</strong><br>
+    Replaced <code>invalidateQueries</code> with 
+    <code>queryClient.setQueryData</code> inside the mutation lifecycle 
+    to merge updated fields into the existing <code>["user"]</code> cache.
+    This preserved stable properties (id, ratings, metadata) 
+    while updating only modified fields.
+
+    <br><br>
+    Since the user profile represents isolated, authenticated state 
+    that does not require cross-user synchronization, 
+    the client cache was treated as a controlled, domain-scoped state layer 
+    rather than relying on repeated server fetches.
+
+    <br><br>
+    <strong>The Impact:</strong><br>
+    • Instant UI reflection after profile update<br>
+    • Eliminated redundant GET requests<br>
+    • Maintained cache integrity across navbar and homepage<br>
+    • Zero full-page refreshes<br>
+    • Reduced server load for authenticated flows
+  </div>
+</div> -->
+
+<!-- <div class="tech-card highlight-card">
+  <div class="card-header">
+    <span class="folder-tag">Backend Architecture</span>
+    <h4>Atomic WorkMate Provisioning</h4>
+  </div>
+
+  <p>
+    Engineered a <strong>transaction-safe creation flow</strong> using 
+    MongoDB sessions to ensure that WorkMate creation and user profile 
+    updates execute as a single atomic operation.
+  </p>
+
+  <ul class="tech-points">
+    <li>🔄 Multi-document transaction with shared session</li>
+    <li>🧩 Atomic creation + relational user update</li>
+    <li>🛑 Automatic rollback on partial failure</li>
+    <li>🛡 Eliminated inconsistent database states</li>
+    <li>⚙️ Production-grade data integrity enforcement</li>
+  </ul>
+</div> -->

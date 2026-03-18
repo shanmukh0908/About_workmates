@@ -1,0 +1,206 @@
+<details class="tree-system_flow_expand">
+
+        <summary class="tree-system_flow_toggle">
+          <span class="tree-open-text-2">Front end folder structure 🔽</span>
+          <span class="tree-close-text-1">✖</span>
+        </summary>
+<div class="tree-container">
+  <div class="tree-unit">
+    <pre>
+root/
+├── index.html
+├── public/
+└── src/
+    ├── App.jsx
+    ├── main.jsx
+    ├── errors/
+    │   └── Errorpage.jsx
+    ├── features/
+    │   ├── header/
+    │   │   └── headerslice.jsx
+    │   └── userType/
+    │       └── userTypeSlice.jsx
+    ├── hooks/
+    │   ├── auth/
+    │   │   └── useLogIn.js
+    │   ├── messages/
+    │   │   ├── useGetAllMessages.js
+    │   │   └── usePostMesaage.js
+    │   ├── notifications/
+    │   │   ├── useGetNotifications.js
+    │   │   └── useSendNotification.js
+    │   ├── ratings/
+    │   │   └── usePostRating.js
+    │   ├── savedTasks/
+    │   │   ├── useGetSavedTasks.js
+    │   │   └── useToggleSave.js
+    │   ├── tasks/
+    │   │   ├── useCreateTask.js
+    │   │   ├── useFilter.js
+    │   │   ├── useFilteredTasks.js
+    │   │   ├── useNearByTasks.js
+    │   │   └── useUpdateTask.js
+    │   ├── user/
+    │   │   ├── useGetUserDetails.js
+    │   │   └── useUpdateUserProfile.js
+    │   ├── workMates/
+    │   │   ├── useCreateWorkmate.js
+    │   │   └── useGetAllWorkMates.js
+    </pre>
+  </div>
+
+
+  <!-- PART 2 -->
+  <div class="tree-unit">
+    <pre>
+src/
+└── pages/
+    ├── homepage/
+    │   ├── HomePage.jsx
+    │   ├── HomePage.module.css
+    │   ├── HomePage.module2.css
+    │   ├── HomePageForNormalUser.jsx
+    │   ├── HomePageLoader.js
+    │   └── HompageForWorkMate.jsx
+    ├── loginformpage/
+    │   ├── LogInFormPage.jsx
+    │   └── LogInFormPage.module.css
+    ├── messagepage/
+    │   ├── AllMessagesPage.jsx
+    │   ├── AllMessagesPage.module.css
+    │   ├── MessagePage.jsx
+    │   ├── messagePage.module.css
+    │   └── MobileMessages.jsx
+    ├── notifications/
+    │   ├── NotificationsPage.jsx
+    │   └── NotificationsPage.module.css
+    ├── profile/
+    │   ├── ProfilePage.jsx
+    │   └── ProfilePage.module.css
+    ├── settings/
+    │   ├── emailpasswordsettings/
+    │   │   ├── EmailPasswordSettingsPage.jsx
+    │   │   └── EmailPasswordSettingsPage.module.css
+    │   ├── notificationssettings/
+    │   │   ├── NotificationSettingsPage.jsx
+    │   │   └── NotificationSettingsPage.module.css
+    │   ├── profilesettings/
+    │   │   ├── ProfileSettingsPage.jsx
+    │   │   └── ProfileSettingsPage.module.css
+    │   ├── visibilitysettings/
+    │   │   ├── VisibilitySettingsPage.jsx
+    │   │   └── VisibilitySettingsPage.module.css
+    │   ├── SettingsPage.jsx
+    │   └── SettingsPage.module.css
+    ├── signupform/
+    │   ├── SignUpFormPage.jsx
+    │   └── SignUpFormPage.module.css
+    ├── tasks/
+    │   ├── CreateTaskFormPage.jsx
+    │   ├── CreateTaskFormPage.module.css
+    │   ├── SavedTasks.jsx
+    │   ├── SavedTasksLoader.js
+    │   ├── TasksPage.jsx
+    │   └── TasksPage.module.css
+    ├── workitempage/
+    │   ├── MessageInput.txt
+    │   ├── WorkItemPage.jsx
+    │   └── WorkItemPage.module.css
+    ├── workmatepage/
+    │   ├── WorkMatePage.jsx
+    │   └── WorkMatePage.module.css
+    ├── workmatespage/
+    │   ├── CreateWorkMateFormPage.jsx
+    │   ├── createWorkMateFormPage.module.css
+    │   ├── WorkMatesPage.jsx
+    │   └── WorkMatesPage.module.css
+    └── yourtaskspage/
+        ├── SavedTasksLoader.js
+        ├── YourSavedTasks.jsx
+        ├── YourTasksPage.jsx
+        ├── YourTasksPage.module.css
+        └── YourTasksPage.txt
+    </pre>
+  </div>
+
+
+  <!-- PART 3 -->
+  <div class="tree-unit">
+    <pre>
+src/
+├── services/
+│   ├── apis/
+│   │   ├── axios.js
+│   │   ├── createNotification.js
+│   │   ├── createTask.js
+│   │   ├── createWorkMate.js
+│   │   ├── GeoLocationApi.js
+│   │   ├── getAllMessages.js
+│   │   ├── getAllNotifications.js
+│   │   ├── getAllTasks.js
+│   │   ├── getAllWorkMates.js
+│   │   ├── getNearByTasks.js
+│   │   ├── getUserDetails.js
+│   │   ├── getUserIdFromToken.js
+│   │   ├── login.js
+│   │   ├── logout.js
+│   │   ├── postMessage.js
+│   │   ├── postRating.js
+│   │   ├── queryClient.js
+│   │   ├── savedTasks.js
+│   │   ├── signUp.js
+│   │   ├── updateMessage.js
+│   │   ├── updateTask.js
+│   │   ├── updateUserDetails.js
+│   │   └── updateUserProfile.js
+│   └── others/
+│       └── store.jsx
+├── styles/
+│   └── GlobalStyles.js
+├── ui/
+│   ├── AppLayout/
+│   │   ├── AppLayout.jsx
+│   │   └── AppLayout1.txt
+│   ├── Header/
+│   │   ├── Header.css
+│   │   ├── Header.jsx
+│   │   ├── NotificationModal.jsx
+│   │   ├── NotificationModal.module.css
+│   │   ├── UserModal.jsx
+│   │   └── UserModal.module.css
+│   ├── Pagination/
+│   │   ├── Pagination.jsx
+│   │   └── Pagination.module.css
+│   ├── Ratings/
+│   │   ├── RatingInput.jsx
+│   │   └── RatingInputStyles.module.css
+│   ├── tasks/
+│   │   └── filtersort/
+│   │       ├── CategoryFeatures.jsx
+│   │       ├── DateFeatures.jsx
+│   │       ├── DistanceFeatures.jsx
+│   │       ├── Filter.jsx
+│   │       ├── Filter.module.css
+│   │       ├── FilterSortButtonBox.jsx
+│   │       ├── PriceFeatures.jsx
+│   │       └── SortFeatures.jsx
+│   └── workMates/
+│       ├── CategoryFeatures.jsx
+│       ├── DateFeatures.jsx
+│       ├── DistanceFeatures.jsx
+│       ├── Filter.jsx
+│       ├── Filter.module.css
+│       ├── PriceFeatures.jsx
+│       ├── workMatesFilter copy.jsx
+│       ├── WorkMatesFilter.jsx
+│       ├── workMatesFilter.module.css
+│       ├── WorkMatesFilterSortButtonBox.jsx
+│       └── WorkMatesSortFeatures.jsx
+└── utils/
+    └── structure.txt
+    </pre>
+  </div>
+
+</div>
+
+ </details>

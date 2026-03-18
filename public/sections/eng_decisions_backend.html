@@ -1,0 +1,537 @@
+<section class="be-engineering-highlights">
+
+  <h2 class="be-key_eng_decisions">⚙ key engineering decisions backend </h2>
+
+  <div class="be-cache_manage">
+    <div class="be-highlight-grid">
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Security Architecture</span>
+          <h4>JWT Authentication with Access and Refresh Tokens</h4>
+        </div>
+
+        <p>
+          Implemented authentication using
+          <strong>short-lived access tokens</strong> and
+          <strong>HTTP-only refresh tokens</strong> to keep users loggedin , maintains security.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Implementation Approach:</strong><br>
+            When an access token expires, the server checks the refresh token
+            stored in a secure cookie. If valid, a new access token is generated
+            and sent back to the client automatically.
+
+            <br><br>
+            Password updates invalidate previous tokens using
+            a <b>passwordChangedAt timestamp comparison</b>.
+
+            <br><br>
+            <b>Result:</b><br>
+            • Secure session handling using HTTP-only cookies<br>
+            • Users remain logged in without repeated login prompts<br>
+            • Token expiration handled automatically
+          </div>
+
+          <div class="be-tech-stack">
+            JWT • HTTP-only Cookies • Refresh Tokens • Express Middleware
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Performance Optimization</span>
+          <h4>Direct Image Upload to Cloudinary storage from frontend </h4>
+        </div>
+
+        <p>
+          Improved the image upload process by allowing the frontend to upload
+          images <strong>directly to Cloudinary</strong> using signed response with trasnformation rule and other rules.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Implementation Approach:</strong><br>
+            Instead of sending images through the backend, the server generates
+            a signed upload token and the React frontend uploads files directly
+            to Cloudinary.
+
+            <br><br>
+            Multiple images are uploaded concurrently using
+            <b>Promise.all()</b>, while Cloudinary handles automatic resizing
+            and compression.
+
+            <br><br>
+            <b>Result:</b><br>
+            • Reduced backend load and memory usage<br>
+            • Faster uploads for users<br>
+            • Simpler backend image handling
+          </div>
+
+          <div class="be-tech-stack">
+            Cloudinary API • Node.js • Promise.all • FormData
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Geo-Spatial System</span>
+          <h4>Location Based Search with 2dsphere Index</h4>
+        </div>
+
+        <p>
+          Built a location-aware task search system using
+          <b>MongoDB 2dsphere indexes</b> to find tasks and workmates near the user.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Implementation Approach:</strong><br>
+            Applied 2dsphere indexes on user and task locations to enable
+            efficient radius-based queries using <b>$near</b>.
+
+            <br><br>
+            Distance from the user is calculated using
+            <b>geolib</b> to display clear distance information in the UI.
+
+            <br><br>
+            <b>Result:</b><br>
+            • Faster location searches using indexing<br>
+            • Ability to filter nearby tasks and providers<br>
+            • Improved location-based user experience
+          </div>
+
+          <div class="be-tech-stack">
+            MongoDB • 2dsphere Index • $near • Geolib
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">API Architecture</span>
+          <h4>Reusable API Query System</h4>
+        </div>
+
+        <p>
+          Built a reusable API query system supporting
+          <strong>filtering, sorting, field selection, and pagination</strong>.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Implementation Approach:</strong><br>
+            URL query parameters are converted into MongoDB query operators
+            (gte, lte, gt, lt) dynamically.
+
+            <br><br>
+            Location filtering and pagination can be combined in a single
+            database query.
+
+            <br><br>
+            <strong>Result:</strong><br>
+            • Flexible API queries<br>
+            • Reduced frontend filtering logic<br>
+            • Efficient database queries
+          </div>
+
+          <div class="be-tech-stack">
+            Express • MongoDB • Query Parsing • REST API
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Data Integrity</span>
+          <h4>MongoDB Session-Based Transactions</h4>
+        </div>
+
+        <p>
+          Used <strong>MongoDB transactions</strong> to ensure multiple related
+          database operations either complete together or roll back on failure.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Implementation Approach:</strong><br>
+            Wrapped related database updates inside a MongoDB session
+            using startTransaction → commitTransaction → abortTransaction.
+
+            <br><br>
+            If any step fails, the transaction is aborted to avoid partial
+            updates across collections.
+
+            <br><br>
+            <strong>Result:</strong><br>
+            • Consistent database state<br>
+            • No partial writes<br>
+            • Safer multi-step operations
+          </div>
+
+          <div class="be-tech-stack">
+            MongoDB Transactions • Mongoose Sessions • Atomic Writes
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Data Modeling</span>
+          <h4>Automatic Rating Calculation</h4>
+        </div>
+
+        <p>
+          Implemented automatic rating updates using
+          <strong>MongoDB aggregation and Mongoose middleware</strong>.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Implementation Approach:</strong><br>
+            Prevented duplicate reviews using a compound index
+            (ratedBy + ratedTo + task).
+
+            <br><br>
+            Average ratings are recalculated using aggregation pipelines
+            whenever a new review is saved.
+
+            <br><br>
+            <strong>Result:</strong><br>
+            • Updated ratings after each review<br>
+            • Prevents duplicate ratings<br>
+            • Simplified rating management
+          </div>
+
+          <div class="be-tech-stack">
+            MongoDB Aggregation • Compound Index • Mongoose Middleware
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- <section class="be-engineering-highlights">
+
+  <h2 class="be-key_eng_decisions">⚙ key engineering decisions backend </h2>
+
+  <div class="be-cache_manage">
+    <div class="be-highlight-grid">
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Security Architecture</span>
+          <h4>Dual-Token JWT System (Access + Refresh)</h4>
+        </div>
+
+        <p>
+          Designed a production-grade authentication system using
+          <strong>short-lived Access Tokens</strong> and
+          <strong>HTTP-only Refresh Tokens</strong> to balance security and UX.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Implemented token rotation with automatic refresh inside the
+            authentication middleware. If an access token expires, the server
+            verifies the refresh token from a secure cookie and transparently
+            re-issues a new access token.
+
+            <br><br>
+            Password change invalidates older tokens using
+            a <b>passwordChangedAt timestamp comparison</b>.
+
+            <br><br>
+            <b>Impact:</b><br>
+            • High Security: HTTP-only cookie prevents XSS token theft<br>
+            • Seamless UX: Silent token refresh without forcing re-login<br>
+            • Production-Ready: Handles token expiry & invalidation centrally
+          </div>
+
+          <div class="be-tech-stack">
+            JWT • HTTP-only Cookies • Refresh Tokens • Express Middleware
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Performance Optimization</span>
+          <h4>Direct-to-Cloud Image Pipeline</h4>
+        </div>
+
+        <p>
+          Re-architected the image upload flow from a heavy backend bottleneck to a 
+          <strong>cryptographically signed Direct-to-Cloud</strong> model, bypassing the Node.js event loop.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Shifted away from Multer and Sharp buffering 5MB+ raw images in Node.js RAM. Instead, Node.js now acts solely as a secure notary to generate and sign authorization tokens.
+
+            <br><br>
+            The React frontend handles concurrent multi-image uploads via 
+            <b>Promise.all()</b>, sending files directly to Cloudinary. I utilized Cloudinary's incoming transformation rules (<b>w_1200, c_limit</b>) for zero-latency, server-side compression upon arrival.
+
+            <br><br>
+            <b>Impact:</b><br>
+            • Eliminated Node.js memory exhaustion and server crash risks<br>
+            • Reduced backend payload from megabytes of binary to kilobytes of JSON<br>
+            • Lightning-fast, non-blocking UI for mobile task creation
+          </div>
+
+          <div class="be-tech-stack">
+            Cloudinary API • Node.js • Promise.all • FormData
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Geo-Spatial System</span>
+          <h4>2dsphere Index + $near Query Engine</h4>
+        </div>
+
+        <p>
+          Engineered a location-aware task discovery system using
+          <b>MongoDB 2dsphere indexing</b> and geospatial queries to fetch tasks and also workmates near users location.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Applied 2dsphere indexes on user and task locations, enabling
+            $near queries for efficient radius-based search.
+
+            <br><br>
+            Enhanced response data with computed
+            <b>distanceFromUser</b> using geolib for precise
+            client-side sorting and UX clarity.
+
+            <br><br>
+            <b>Impact:</b><br>
+            • Faster lookups with indexing<br>
+            • Scalable proximity filtering<br>
+            • Real-time location-based marketplace experience
+          </div>
+
+          <div class="be-tech-stack">
+            MongoDB • 2dsphere Index • $geoNear • Geolib
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">API Architecture</span>
+          <h4>Dynamic Query Builder with Advanced Filters</h4>
+        </div>
+
+        <p>
+          Built a reusable query abstraction supporting
+          <strong>filtering, sorting, field limiting, pagination, OR conditions, and selecting date ranges in single database call</strong>.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Transformed URL query parameters into MongoDB operators dynamically
+            (gte, lte, gt, lt) while excluding reserved keywords.
+
+            <br><br>
+            Combined geo filtering + conditional matching + pagination
+            in a single pipeline, avoiding multiple database calls.
+
+            <br><br>
+            <strong>Impact:</strong><br>
+            • Highly flexible search API<br>
+            • Reduces frontend complexity<br>
+            • Enterprise-level REST query capability
+          </div>
+
+          <div class="be-tech-stack">
+            Express • MongoDB • Query Parsing • REST API Design
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Data Integrity</span>
+          <h4>MongoDB Session-Based Transactions</h4>
+        </div>
+
+        <p>
+          Ensured atomic consistency when creating a WorkMate profile
+          and updating user skills using <strong>MongoDB transactions</strong> for workmatemodel and usermodel.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Wrapped multi-document operations inside a MongoDB session
+            with startTransaction → commitTransaction → abortTransaction flow.
+
+            <br><br>
+            Prevents partial writes if any operation fails, preserving
+            database integrity across collections.
+
+            <br><br>
+            <strong>Impact:</strong><br>
+            • ACID-compliant updates<br>
+            • Prevents orphaned records<br>
+            • Production-safe multi-step operations
+          </div>
+
+          <div class="be-tech-stack">
+            MongoDB Transactions • Mongoose Sessions • Atomic Writes
+          </div>
+        </details>
+      </div>
+
+      <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Data Modeling</span>
+          <h4>Self-Updating Rating Aggregation</h4>
+        </div>
+
+        <p>
+          Designed an automated rating recalculation system using
+          <strong>MongoDB Aggregation + Post-Save Hooks</strong>.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Enforced uniqueness (ratedBy + ratedTo + task) via compound index,
+            then recalculated average ratings using an aggregation pipeline
+            inside a post-save middleware.
+
+            <br><br>
+            Rating changes automatically propagate to the User model.
+
+            <br><br>
+            <strong>Impact:</strong><br>
+            • Real-time rating accuracy<br>
+            • Prevents duplicate reviews<br>
+            • Eliminates manual recalculation logic
+          </div>
+
+          <div class="be-tech-stack">
+            MongoDB Aggregation • Compound Indexes • Mongoose Middleware
+          </div>
+        </details>
+      </div> -->
+
+      <!-- <div class="be-tech-card be-highlight-card">
+        <div class="be-card-header">
+          <span class="be-folder-tag">Media Optimization</span>
+          <h4>In-Memory Image Processing with Sharp</h4>
+        </div>
+
+        <p>
+          Built a memory-based image pipeline using
+          <strong>Multer + Sharp</strong> to compress, resize, and optimize uploads.
+        </p>
+
+        <details class="be-eng_decisions_expand">
+          <summary class="be-eng_decisions_toggle">
+            <span class="be-open-text">more...</span>
+            <span class="be-close-text">✖</span>
+          </summary>
+
+          <div class="be-decision-why">
+            <strong>Engineering Strategy:</strong><br>
+            Used Multer memoryStorage to avoid disk I/O bottlenecks,
+            then transformed images with Sharp (WebP conversion, resizing,
+            EXIF stripping, compression tuning).
+
+            <br><br>
+            Standardized naming conventions to avoid collisions
+            and enable deterministic asset management.
+
+            <br><br>
+            <strong>Impact:</strong><br>
+            • Reduced storage footprint<br>
+            • Faster CDN delivery<br>
+            • Production-grade media optimization
+          </div>
+
+          <div class="be-tech-stack">
+            Multer • Sharp • WebP • Image Compression
+          </div>
+        </details>
+      </div> -->
+
+    </div>
+  </div>
+</section>

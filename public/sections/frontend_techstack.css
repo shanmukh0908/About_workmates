@@ -1,0 +1,101 @@
+/* ===== FRONTEND TECH STACK SECTION ===== */
+.fe-tech-stack-section {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  font-family: 'Inter', sans-serif;
+}
+
+.fe-tech-stack-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #0f172a; /* Slate 900 */
+}
+
+.fe-tech-stack-flexbox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fe-stack-card {
+  background: #ffffff; /* Keeping FE cards light for a "clean UI" feel */
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.fe-stack-card:hover {
+  transform: translateY(-5px);
+  border-color: #4f46e5; /* Work Mates Primary Indigo */
+  box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.3);
+}
+
+.fe-stack-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.fe-stack-icon {
+  font-size: 1.2rem;
+}
+
+.fe-stack-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b; /* Slate 800 */
+  margin: 0;
+}
+
+.fe-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.fe-tag-container span {
+  /* Using your Brand Indigo with soft opacity */
+  background: rgba(79, 70, 229, 0.05);
+  color: #4f46e5;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Fira Code', monospace;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  transition: all 0.2s ease;
+}
+
+.fe-stack-card:hover .fe-tag-container span {
+  background: rgba(79, 70, 229, 0.1);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  .fe-tech-stack-section {
+    padding: 1.5rem 1rem;
+    margin: 1.5rem auto;
+  }
+  
+  .fe-tech-stack-title {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .fe-tag-container span {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+  }
+}

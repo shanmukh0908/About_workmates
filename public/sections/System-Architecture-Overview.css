@@ -1,0 +1,128 @@
+/* Container for the entire architecture section */
+.system_flow_expand {
+  width: 100%;
+  margin: 2rem auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease; 
+}
+
+.system_flow_expand:hover{
+    transform: scale(1.01);
+}
+
+/* The Boxed Toggle Header */
+.system_flow_toggle {
+  list-style: none; /* Removes default arrow */
+  cursor: pointer;
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc; /* Light slate box */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.system_flow_toggle:hover{
+ background: #1dc24448;
+}
+
+
+
+/* Visual indicator when open */
+.system_flow_expand[open] {
+     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.system_flow_expand[open] .system_flow_toggle {
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: none;
+}
+
+.system_flow_expand[open]:hover{
+    transform: scale(1);
+}
+
+/* Formatting the text inside the toggle box */
+.open-text-1,.open-text-2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.open-text-2::before  {
+  content: "📂"; 
+  font-size: 1.2rem;
+}
+
+.open-text-1::after {
+  content: "click  to open"; 
+  font-size: 1rem;
+  font-weight: 300;
+  margin-left: 40em;
+  border-radius: 100px;
+  padding: 0.2rem;
+  border:#2c589d4c 1px solid;
+  background-color: #749ee134;
+  text-align: center;
+}
+
+.close-text-1{
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: bold;
+  display: none;
+}
+
+.system_flow_expand[open] .open-text-1,.system_flow_expand[open] .open-text-2 {
+  display: none;
+}
+
+.system_flow_expand[open] .close-text-1 {
+  display: inline;
+}
+
+
+/* Image Presentation Logic */
+.system_flow_expand img {
+  display: block;
+  width: 90%; /* Inline with parent but with slight breathing room */
+  max-width: 900px;
+  margin: 2rem auto; /* Centered with vertical spacing */
+  border-radius: 8px;
+  
+  /* Modern soft shadow for the diagram */
+  border: 1px solid #f1f5f9;
+  transition: transform 0.3s ease;
+}
+
+.system_flow_expand img:hover {
+  transform: scale(1.01); /* Subtle zoom on hover */
+}
+
+/* Remove default marker in Chrome/Safari */
+.system_flow_toggle::-webkit-details-marker {
+  display: none;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+  .system_flow_expand img {
+    width: 95%;
+    margin: 1.5rem auto;
+  }
+  
+  .open-text-1 {
+    font-size: 1rem;
+  }
+}
