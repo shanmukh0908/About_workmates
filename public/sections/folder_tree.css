@@ -208,6 +208,10 @@
     width: 100%;
     margin:0
   }
+
+  .tree-container-backend{
+    flex-direction: column;
+  }
   
   .tree-open-text-1 {
     font-size: 1rem;
